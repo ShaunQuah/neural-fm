@@ -95,7 +95,10 @@ def main():
                          "val_mean": v.mean(), "val_sd": v.std(ddof=1) if len(v) > 1 else None,
                          "dev_mean": dv.mean(), "val_per_seed": v.tolist(),
                          "dev_per_seed": dv.tolist()}
-    (out / "summary.json").write_text(json.dumps(summary, indent=2))
+    sum_f = out / "summary.json"
+    if a.only and sum_f.exists():      # partial run: update those configs, keep the others
+        summary = {**json.loads(sum_f.read_text()), **summary}
+    sum_f.write_text(json.dumps(summary, indent=2))
     print("\nconfig        params   dev     val (mean ± sd)")
     for k, s in summary.items():
         sd = f"{s['val_sd']:.4f}" if s["val_sd"] is not None else "  n/a "

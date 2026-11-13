@@ -92,6 +92,8 @@ def run(args) -> dict:
                     break
     model.load_state_dict(best_state)
     rates = predict(model, d["val_in"], device)
+    # NB: "val_co_bps" here uses the stricter training-mean null. The NLB-official score (null =
+    # mean of the evaluated spikes) is re-computed from the checkpoint in ablate.py/notebooks.
     res = {"run": args.run_name, "seed": args.seed, "dev_co_bps": best,
            "val_co_bps": co_bps(rates[..., n_in:], d["val_out"], d["train_out"]),
            "n_params": sum(p.numel() for p in model.parameters()),
@@ -121,7 +123,8 @@ def parser():
     p.add_argument("--no-mlflow", action="store_true")
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--epochs", type=int, default=200)
-    p.add_argument("--patience", type=int, default=8)
+    p.add_argument("--patience", type=int, default=8,
+                   help="early-stopping patience in dev evaluations (one every 5 epochs)")
     p.add_argument("--bs", type=int, default=64)
     p.add_argument("--lr", type=float, default=1e-3)
     p.add_argument("--wd", type=float, default=0.01)

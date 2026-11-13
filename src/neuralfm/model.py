@@ -57,7 +57,11 @@ class MaskedSpikeTransformer(nn.Module):
 
 
 def random_time_mask(batch: int, seq_len: int, ratio: float, span: int, device) -> torch.Tensor:
-    """Contiguous-span masking: each span start is Bernoulli(ratio/span)."""
+    """Contiguous-span masking: each span start is Bernoulli(ratio/span).
+
+    `ratio` is nominal. Spans overlap and are cut off at the end of the trial, so the realised
+    masked fraction is lower: about 0.095 / 0.22 / 0.40 for ratio 0.10 / 0.25 / 0.50 at span 5.
+    """
     starts = torch.rand(batch, seq_len, device=device) < (ratio / span)
     mask = starts.clone()
     for k in range(1, span):

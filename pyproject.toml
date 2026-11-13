@@ -8,10 +8,10 @@ version = "0.1.0"
 description = "Self-supervised transformer for neural spiking data: masked pretraining and evaluation"
 authors = [{ name = "Shaun Quah" }]
 requires-python = ">=3.10"
-dependencies = ["numpy", "torch>=2.4"]
+dependencies = ["numpy", "scipy", "torch>=2.4"]  # scipy: neuralfm.metrics imports it
 
 [project.optional-dependencies]
-train = ["scipy", "scikit-learn", "pandas", "pynwb", "mlflow", "accelerate", "nlb_tools"]
+train = ["scikit-learn", "pandas", "pynwb", "mlflow", "accelerate", "nlb_tools"]
 serve = ["fastapi", "uvicorn", "pydantic>=2"]
 dev = ["pytest", "ruff", "httpx"]
 

@@ -10,8 +10,10 @@ Early stopping in stage 2 uses a dev subset of the same fraction, so total label
 The official validation split is scored once per run, from the best-dev checkpoint.
 
 Usage:
-    python -m neuralfm.pretrain --stage lr        # small dev-only learning-rate sweep (seed 0, 25%)
+    python -m neuralfm.pretrain --stage lr        # dev-only learning-rate sweep (seeds 0-2, 25%)
+    python -m neuralfm.pretrain --stage lr_frac   # dev-only per-fraction lr for scratch/finetune
     python -m neuralfm.pretrain --stage main      # pretrain + adapt, resumable
+Reported "val_co_bps" is the NLB-official co-bps (null = mean of the evaluated val spikes).
 """
 from __future__ import annotations
 
@@ -224,7 +226,7 @@ def main():
 
     if a.stage == "lr":
         # dev-only: pick each mode's learning rate by mean dev score over 3 seeds at 25% labels
-        # (a single seed on ~39 dev trials was too noisy to rank learning rates)
+        # (a single seed on 64 dev trials was too noisy to rank learning rates)
         pres = {s: pretrain(d, s, device, out, steps=a.pre_steps) for s in (0, 1, 2)}
         lr_file = out / "lr_sweep.json"
         res = json.loads(lr_file.read_text()) if lr_file.exists() else {}
@@ -262,7 +264,10 @@ def main():
                 rows.append(r)
                 print(f"s{seed} frac {frac:<4} {mode:8s} dev {r['dev_co_bps']:.4f} "
                       f"val {r['val_co_bps']:.4f}", flush=True)
-    (out / "all_runs.json").write_text(json.dumps(rows, indent=2))
+    all_f = out / "all_runs.json"      # keep rows of seeds not re-requested (partial --seeds runs)
+    if all_f.exists():
+        rows = [r for r in json.loads(all_f.read_text()) if r["seed"] not in a.seeds] + rows
+    all_f.write_text(json.dumps(rows, indent=2))
     print("\nmode      frac   n_lab   val mean ± sd")
     for mode in MODES:
         for frac in FRACS:

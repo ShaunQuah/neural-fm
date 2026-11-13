@@ -12,8 +12,8 @@ def load_mc_maze(datapath: str, cache: str = "results/mc_maze_5ms.npz", bin_widt
     """Return dict of (trials, time, neurons) arrays. Cached because NWB parsing is slow."""
     cache_p = Path(cache)
     if cache_p.exists():
-        z = np.load(cache_p)
-        return {k: z[k] for k in KEYS}
+        with np.load(cache_p) as z:  # close the npz handle (it locks the file on Windows)
+            return {k: z[k] for k in KEYS}
     from nlb_tools.make_tensors import make_eval_input_tensors, make_train_input_tensors
     from nlb_tools.nwb_interface import NWBDataset
 

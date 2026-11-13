@@ -1,7 +1,9 @@
 """Smoothing + Poisson GLM trained on the same nested labelled subsets as pretrain.py.
 
 Regularisation (alpha) is chosen per (seed, fraction) on the same dev subset the transformer arms
-use for early stopping; the official validation split is scored once with the chosen alpha.
+use for early stopping. Validation predictions are computed for every alpha, but the reported
+score is the one at the dev-chosen alpha (validation never enters the choice). The smoothing
+kernel is fixed at 50 ms, not tuned.
 Usage: python -m neuralfm.glm_fraction
 """
 from __future__ import annotations
