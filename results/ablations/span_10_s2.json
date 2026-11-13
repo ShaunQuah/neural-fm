@@ -1,0 +1,9 @@
+{
+  "run": "span_10",
+  "seed": 2,
+  "dev_co_bps": 0.3188985335506165,
+  "val_co_bps": 0.3346925935549355,
+  "n_params": 852534,
+  "train_seconds": 73.38789534568787,
+  "val_co_bps_official": 0.3335445511753644
+}

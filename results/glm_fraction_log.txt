@@ -1,0 +1,24 @@
+﻿s0 frac 0.1: alpha 0.1 dev 0.1466 val 0.1369 (7s)
+s0 frac 0.25: alpha 0.1 dev 0.1671 val 0.1702 (8s)
+s0 frac 0.5: alpha 0.01 dev 0.1784 val 0.1864 (19s)
+s0 frac 1.0: alpha 0.01 dev 0.2033 val 0.2093 (57s)
+s1 frac 0.1: alpha 0.1 dev 0.1524 val 0.1382 (6s)
+s1 frac 0.25: alpha 0.1 dev 0.1922 val 0.1716 (9s)
+s1 frac 0.5: alpha 0.01 dev 0.2014 val 0.1881 (19s)
+s1 frac 1.0: alpha 0.01 dev 0.2189 val 0.2090 (56s)
+s2 frac 0.1: alpha 0.1 dev 0.1748 val 0.1392 (6s)
+s2 frac 0.25: alpha 0.1 dev 0.1710 val 0.1707 (9s)
+s2 frac 0.5: alpha 0.1 dev 0.1726 val 0.1820 (18s)
+s2 frac 1.0: alpha 0.01 dev 0.1943 val 0.2083 (55s)
+s3 frac 0.1: alpha 0.1 dev 0.1416 val 0.1420 (5s)
+s3 frac 0.25: alpha 0.1 dev 0.1675 val 0.1714 (9s)
+s3 frac 0.5: alpha 0.01 dev 0.1844 val 0.1880 (19s)
+s3 frac 1.0: alpha 0.01 dev 0.2062 val 0.2084 (54s)
+s4 frac 0.1: alpha 0.1 dev 0.1518 val 0.1408 (6s)
+s4 frac 0.25: alpha 0.1 dev 0.1718 val 0.1696 (9s)
+s4 frac 0.5: alpha 0.01 dev 0.1904 val 0.1870 (19s)
+s4 frac 1.0: alpha 0.01 dev 0.2108 val 0.2094 (56s)
+glm frac 0.1: 0.1394 ± 0.0020
+glm frac 0.25: 0.1707 ± 0.0008
+glm frac 0.5: 0.1863 ± 0.0025
+glm frac 1.0: 0.2089 ± 0.0005

@@ -1,0 +1,9 @@
+{
+  "run": "no_mask",
+  "seed": 1,
+  "dev_co_bps": 0.2560819359533802,
+  "val_co_bps": 0.2549287893310128,
+  "n_params": 852534,
+  "train_seconds": 67.58335065841675,
+  "val_co_bps_official": 0.2537807469514417
+}

@@ -1,0 +1,154 @@
+﻿s0 frac 0.1  scratch  dev -0.0460 val -0.0428
+s0 frac 0.1  finetune dev 0.2228 val 0.1822
+s0 frac 0.1  probe    dev 0.3000 val 0.2546
+s0 frac 0.25 scratch  dev 0.2306 val 0.2226
+s0 frac 0.25 finetune dev 0.2627 val 0.2544
+s0 frac 0.25 probe    dev 0.3058 val 0.2978
+s0 frac 0.5  scratch  dev 0.2956 val 0.2874
+s0 frac 0.5  finetune dev 0.3120 val 0.3133
+s0 frac 0.5  probe    dev 0.3154 val 0.3152
+s0 frac 1.0  scratch  dev 0.1857 val 0.1908
+s0 frac 1.0  finetune dev 0.2965 val 0.3101
+s0 frac 1.0  probe    dev 0.3175 val 0.3244
+s1 frac 0.1  scratch  dev 0.0796 val 0.0478
+s1 frac 0.1  finetune dev 0.2217 val 0.1771
+s1 frac 0.1  probe    dev 0.1078 val 0.0698
+s1 frac 0.25 scratch  dev 0.2169 val 0.1947
+s1 frac 0.25 finetune dev 0.2874 val 0.2632
+s1 frac 0.25 probe    dev 0.1205 val 0.1119
+s1 frac 0.5  scratch  dev 0.1986 val 0.1925
+s1 frac 0.5  finetune dev 0.3322 val 0.3069
+s1 frac 0.5  probe    dev 0.1355 val 0.1311
+s1 frac 1.0  scratch  dev 0.2242 val 0.2129
+s1 frac 1.0  finetune dev 0.2999 val 0.2907
+s1 frac 1.0  probe    dev 0.1526 val 0.1405
+s2 frac 0.1  scratch  dev 0.0793 val 0.0532
+s2 frac 0.1  finetune dev 0.2477 val 0.1875
+s2 frac 0.1  probe    dev 0.2356 val 0.1267
+s2 frac 0.25 scratch  dev 0.2057 val 0.2001
+s2 frac 0.25 finetune dev 0.2754 val 0.2617
+s2 frac 0.25 probe    dev 0.2718 val 0.1999
+s2 frac 0.5  scratch  dev 0.2924 val 0.2969
+s2 frac 0.5  finetune dev 0.3070 val 0.3135
+s2 frac 0.5  probe    dev 0.2548 val 0.2376
+s2 frac 1.0  scratch  dev 0.3274 val 0.3395
+s2 frac 1.0  finetune dev 0.3332 val 0.3452
+s2 frac 1.0  probe    dev 0.2605 val 0.2460
+pretrain s3 step 200 train 0.3455 dev held-in NLL 0.3098
+pretrain s3 step 400 train 0.1582 dev held-in NLL 0.1438
+pretrain s3 step 600 train 0.1050 dev held-in NLL 0.1020
+pretrain s3 step 800 train 0.0945 dev held-in NLL 0.0937
+pretrain s3 step 1000 train 0.0914 dev held-in NLL 0.0921
+pretrain s3 step 1200 train 0.0923 dev held-in NLL 0.0918
+pretrain s3 step 1400 train 0.0909 dev held-in NLL 0.0918
+pretrain s3 step 1600 train 0.0887 dev held-in NLL 0.0917
+pretrain s3 step 1800 train 0.0896 dev held-in NLL 0.0911
+pretrain s3 step 2000 train 0.0894 dev held-in NLL 0.0905
+pretrain s3 step 2200 train 0.0856 dev held-in NLL 0.0897
+pretrain s3 step 2400 train 0.0888 dev held-in NLL 0.0890
+pretrain s3 step 2600 train 0.0881 dev held-in NLL 0.0886
+pretrain s3 step 2800 train 0.0882 dev held-in NLL 0.0882
+pretrain s3 step 3000 train 0.0873 dev held-in NLL 0.0879
+pretrain s3 step 3200 train 0.0862 dev held-in NLL 0.0877
+pretrain s3 step 3400 train 0.0888 dev held-in NLL 0.0876
+pretrain s3 step 3600 train 0.0872 dev held-in NLL 0.0875
+pretrain s3 step 3800 train 0.0863 dev held-in NLL 0.0874
+pretrain s3 step 4000 train 0.0862 dev held-in NLL 0.0873
+pretrain s3 step 4200 train 0.0838 dev held-in NLL 0.0872
+pretrain s3 step 4400 train 0.0865 dev held-in NLL 0.0871
+pretrain s3 step 4600 train 0.0861 dev held-in NLL 0.0871
+pretrain s3 step 4800 train 0.0852 dev held-in NLL 0.0870
+pretrain s3 step 5000 train 0.0870 dev held-in NLL 0.0870
+pretrain s3 step 5200 train 0.0888 dev held-in NLL 0.0869
+pretrain s3 step 5400 train 0.0865 dev held-in NLL 0.0872
+pretrain s3 step 5600 train 0.0863 dev held-in NLL 0.0869
+pretrain s3 step 5800 train 0.0858 dev held-in NLL 0.0869
+pretrain s3 step 6000 train 0.0885 dev held-in NLL 0.0868
+pretrain s3 step 6200 train 0.0858 dev held-in NLL 0.0868
+pretrain s3 step 6400 train 0.0855 dev held-in NLL 0.0868
+pretrain s3 step 6600 train 0.0863 dev held-in NLL 0.0868
+pretrain s3 step 6800 train 0.0863 dev held-in NLL 0.0867
+pretrain s3 step 7000 train 0.0845 dev held-in NLL 0.0867
+pretrain s3 step 7200 train 0.0853 dev held-in NLL 0.0867
+pretrain s3 step 7400 train 0.0856 dev held-in NLL 0.0867
+pretrain s3 step 7600 train 0.0857 dev held-in NLL 0.0867
+pretrain s3 step 7800 train 0.0824 dev held-in NLL 0.0867
+pretrain s3 step 8000 train 0.0871 dev held-in NLL 0.0867
+s3 frac 0.1  scratch  dev -0.0445 val -0.0454
+s3 frac 0.1  finetune dev 0.2192 val 0.1915
+s3 frac 0.1  probe    dev 0.2533 val 0.1411
+s3 frac 0.25 scratch  dev 0.1997 val 0.1877
+s3 frac 0.25 finetune dev 0.2715 val 0.2679
+s3 frac 0.25 probe    dev 0.2042 val 0.1974
+s3 frac 0.5  scratch  dev 0.2990 val 0.2946
+s3 frac 0.5  finetune dev 0.3149 val 0.3172
+s3 frac 0.5  probe    dev 0.2255 val 0.2142
+s3 frac 1.0  scratch  dev 0.1637 val 0.1619
+s3 frac 1.0  finetune dev 0.3524 val 0.3436
+s3 frac 1.0  probe    dev 0.2411 val 0.2195
+pretrain s4 step 200 train 0.3255 dev held-in NLL 0.2900
+pretrain s4 step 400 train 0.1514 dev held-in NLL 0.1377
+pretrain s4 step 600 train 0.1043 dev held-in NLL 0.1003
+pretrain s4 step 800 train 0.0946 dev held-in NLL 0.0929
+pretrain s4 step 1000 train 0.0912 dev held-in NLL 0.0915
+pretrain s4 step 1200 train 0.0924 dev held-in NLL 0.0912
+pretrain s4 step 1400 train 0.0925 dev held-in NLL 0.0912
+pretrain s4 step 1600 train 0.0895 dev held-in NLL 0.0911
+pretrain s4 step 1800 train 0.0893 dev held-in NLL 0.0904
+pretrain s4 step 2000 train 0.0893 dev held-in NLL 0.0897
+pretrain s4 step 2200 train 0.0899 dev held-in NLL 0.0889
+pretrain s4 step 2400 train 0.0879 dev held-in NLL 0.0885
+pretrain s4 step 2600 train 0.0895 dev held-in NLL 0.0879
+pretrain s4 step 2800 train 0.0885 dev held-in NLL 0.0876
+pretrain s4 step 3000 train 0.0885 dev held-in NLL 0.0873
+pretrain s4 step 3200 train 0.0872 dev held-in NLL 0.0871
+pretrain s4 step 3400 train 0.0867 dev held-in NLL 0.0870
+pretrain s4 step 3600 train 0.0853 dev held-in NLL 0.0868
+pretrain s4 step 3800 train 0.0857 dev held-in NLL 0.0867
+pretrain s4 step 4000 train 0.0847 dev held-in NLL 0.0865
+pretrain s4 step 4200 train 0.0853 dev held-in NLL 0.0864
+pretrain s4 step 4400 train 0.0924 dev held-in NLL 0.0919
+pretrain s4 step 4600 train 0.0868 dev held-in NLL 0.0869
+pretrain s4 step 4800 train 0.0872 dev held-in NLL 0.0866
+pretrain s4 step 5000 train 0.0870 dev held-in NLL 0.0865
+pretrain s4 step 5200 train 0.0851 dev held-in NLL 0.0863
+pretrain s4 step 5400 train 0.0860 dev held-in NLL 0.0863
+pretrain s4 step 5600 train 0.0850 dev held-in NLL 0.0863
+pretrain s4 step 5800 train 0.0853 dev held-in NLL 0.0862
+pretrain s4 step 6000 train 0.0848 dev held-in NLL 0.0863
+pretrain s4 step 6200 train 0.0889 dev held-in NLL 0.0862
+pretrain s4 step 6400 train 0.0878 dev held-in NLL 0.0862
+pretrain s4 step 6600 train 0.0856 dev held-in NLL 0.0862
+pretrain s4 step 6800 train 0.0852 dev held-in NLL 0.0861
+pretrain s4 step 7000 train 0.0873 dev held-in NLL 0.0861
+pretrain s4 step 7200 train 0.0867 dev held-in NLL 0.0861
+pretrain s4 step 7400 train 0.0867 dev held-in NLL 0.0861
+pretrain s4 step 7600 train 0.0858 dev held-in NLL 0.0861
+pretrain s4 step 7800 train 0.0882 dev held-in NLL 0.0861
+pretrain s4 step 8000 train 0.0874 dev held-in NLL 0.0861
+s4 frac 0.1  scratch  dev 0.0690 val 0.0628
+s4 frac 0.1  finetune dev 0.1612 val 0.1613
+s4 frac 0.1  probe    dev 0.2597 val 0.2404
+s4 frac 0.25 scratch  dev 0.2236 val 0.2191
+s4 frac 0.25 finetune dev 0.2606 val 0.2583
+s4 frac 0.25 probe    dev 0.2776 val 0.2855
+s4 frac 0.5  scratch  dev 0.2787 val 0.2912
+s4 frac 0.5  finetune dev 0.2990 val 0.3013
+s4 frac 0.5  probe    dev 0.2892 val 0.2999
+s4 frac 1.0  scratch  dev 0.3426 val 0.3421
+s4 frac 1.0  finetune dev 0.3425 val 0.3405
+s4 frac 1.0  probe    dev 0.3062 val 0.3085
+
+mode      frac   n_lab   val mean ± sd
+scratch   0.1     146   0.0151 ± 0.0543
+scratch   0.25    366   0.2048 ± 0.0153
+scratch   0.5     732   0.2725 ± 0.0449
+scratch   1.0    1463   0.2494 ± 0.0853
+finetune  0.1     146   0.1799 ± 0.0117
+finetune  0.25    366   0.2611 ± 0.0051
+finetune  0.5     732   0.3105 ± 0.0063
+finetune  1.0    1463   0.3260 ± 0.0244
+probe     0.1     146   0.1665 ± 0.0788
+probe     0.25    366   0.2185 ± 0.0757
+probe     0.5     732   0.2396 ± 0.0738
+probe     1.0    1463   0.2478 ± 0.0740

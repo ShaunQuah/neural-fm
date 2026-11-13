@@ -1,0 +1,74 @@
+﻿s0 frac 0.1  scratch  dev 0.0465 val 0.0303
+s0 frac 0.1  finetune dev 0.2114 val 0.1857
+s0 frac 0.1  probe    dev 0.2990 val 0.2526
+s0 frac 0.25 scratch  dev 0.1678 val 0.1707
+s0 frac 0.25 finetune dev 0.2712 val 0.2614
+s0 frac 0.25 probe    dev 0.3024 val 0.2934
+s0 frac 0.5  scratch  dev 0.2815 val 0.2828
+s0 frac 0.5  finetune dev 0.3105 val 0.3114
+s0 frac 0.5  probe    dev 0.3089 val 0.3055
+s0 frac 1.0  scratch  dev 0.3280 val 0.3344
+s0 frac 1.0  finetune dev 0.3384 val 0.3442
+s0 frac 1.0  probe    dev 0.3067 val 0.3112
+s1 frac 0.1  scratch  dev 0.0601 val 0.0161
+s1 frac 0.1  finetune dev 0.2011 val 0.1666
+s1 frac 0.1  probe    dev 0.1527 val 0.1117
+s1 frac 0.25 scratch  dev 0.2143 val 0.1997
+s1 frac 0.25 finetune dev 0.2726 val 0.2506
+s1 frac 0.25 probe    dev 0.2036 val 0.1840
+s1 frac 0.5  scratch  dev 0.3141 val 0.2868
+s1 frac 0.5  finetune dev 0.3309 val 0.3097
+s1 frac 0.5  probe    dev 0.2266 val 0.2124
+s1 frac 1.0  scratch  dev 0.3419 val 0.3331
+s1 frac 1.0  finetune dev 0.3534 val 0.3455
+s1 frac 1.0  probe    dev 0.2338 val 0.2231
+s2 frac 0.1  scratch  dev 0.0772 val 0.0290
+s2 frac 0.1  finetune dev 0.1963 val 0.1796
+s2 frac 0.1  probe    dev 0.2446 val 0.1583
+s2 frac 0.25 scratch  dev 0.2034 val 0.1911
+s2 frac 0.25 finetune dev 0.2757 val 0.2624
+s2 frac 0.25 probe    dev 0.2866 val 0.2536
+s2 frac 0.5  scratch  dev 0.2777 val 0.2893
+s2 frac 0.5  finetune dev 0.2727 val 0.2802
+s2 frac 0.5  probe    dev 0.2846 val 0.2889
+s2 frac 1.0  scratch  dev 0.3215 val 0.3284
+s2 frac 1.0  finetune dev 0.3344 val 0.3481
+s2 frac 1.0  probe    dev 0.2933 val 0.3004
+s3 frac 0.1  scratch  dev 0.0360 val 0.0236
+s3 frac 0.1  finetune dev 0.2178 val 0.1916
+s3 frac 0.1  probe    dev 0.2511 val 0.1481
+s3 frac 0.25 scratch  dev 0.2468 val 0.2361
+s3 frac 0.25 finetune dev 0.2700 val 0.2693
+s3 frac 0.25 probe    dev 0.2614 val 0.2513
+s3 frac 0.5  scratch  dev 0.2919 val 0.2946
+s3 frac 0.5  finetune dev 0.3144 val 0.3130
+s3 frac 0.5  probe    dev 0.2807 val 0.2731
+s3 frac 1.0  scratch  dev 0.3418 val 0.3318
+s3 frac 1.0  finetune dev 0.3138 val 0.3075
+s3 frac 1.0  probe    dev 0.2956 val 0.2815
+s4 frac 0.1  scratch  dev 0.0398 val 0.0180
+s4 frac 0.1  finetune dev 0.1532 val 0.1558
+s4 frac 0.1  probe    dev 0.2585 val 0.2398
+s4 frac 0.25 scratch  dev 0.2324 val 0.2225
+s4 frac 0.25 finetune dev 0.2668 val 0.2588
+s4 frac 0.25 probe    dev 0.2720 val 0.2794
+s4 frac 0.5  scratch  dev 0.2568 val 0.2614
+s4 frac 0.5  finetune dev 0.3027 val 0.3077
+s4 frac 0.5  probe    dev 0.2808 val 0.2891
+s4 frac 1.0  scratch  dev 0.3352 val 0.3313
+s4 frac 1.0  finetune dev 0.3458 val 0.3405
+s4 frac 1.0  probe    dev 0.2945 val 0.2954
+
+mode      frac   n_lab   val mean ± sd
+scratch   0.1     146   0.0234 ± 0.0063
+scratch   0.25    366   0.2040 ± 0.0258
+scratch   0.5     732   0.2830 ± 0.0128
+scratch   1.0    1463   0.3318 ± 0.0023
+finetune  0.1     146   0.1759 ± 0.0146
+finetune  0.25    366   0.2605 ± 0.0067
+finetune  0.5     732   0.3044 ± 0.0137
+finetune  1.0    1463   0.3372 ± 0.0168
+probe     0.1     146   0.1821 ± 0.0612
+probe     0.25    366   0.2523 ± 0.0421
+probe     0.5     732   0.2738 ± 0.0362
+probe     1.0    1463   0.2823 ± 0.0348

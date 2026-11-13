@@ -1,0 +1,11 @@
+{
+  "mode": "finetune",
+  "frac": 0.1,
+  "seed": 0,
+  "lr": 0.003,
+  "n_labelled_trials": 146,
+  "n_dev_trials": 26,
+  "dev_co_bps": 0.22276759304817295,
+  "val_co_bps": 0.18216267735886676,
+  "steps_run": 2100
+}

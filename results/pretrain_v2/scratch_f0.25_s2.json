@@ -1,0 +1,11 @@
+{
+  "mode": "scratch",
+  "frac": 0.25,
+  "seed": 2,
+  "lr": 0.003,
+  "n_labelled_trials": 366,
+  "n_dev_trials": 64,
+  "dev_co_bps": 0.20338798782558357,
+  "val_co_bps": 0.19112645028496966,
+  "steps_run": 3400
+}

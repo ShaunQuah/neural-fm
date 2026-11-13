@@ -1,0 +1,11 @@
+{
+  "mode": "probe",
+  "frac": 0.1,
+  "seed": 4,
+  "lr": 0.03,
+  "n_labelled_trials": 146,
+  "n_dev_trials": 26,
+  "dev_co_bps": 0.2596539813033057,
+  "val_co_bps": 0.24043607472780723,
+  "steps_run": 2900
+}

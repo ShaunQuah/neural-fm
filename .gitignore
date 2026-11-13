@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Data (download from DANDI; see README)
+data/
+
+# Large or regenerable outputs: model checkpoints, caches, tracking databases
+*.pt
+*.npz
+mlflow.db
+mlruns/
+
+# Keep small result files (JSON, text logs) and figures
+!results/**/*.json
+!results/**/*.txt

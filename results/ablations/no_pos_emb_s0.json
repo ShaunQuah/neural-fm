@@ -1,0 +1,9 @@
+{
+  "run": "no_pos_emb",
+  "seed": 0,
+  "dev_co_bps": 0.135902439864719,
+  "val_co_bps": 0.13994708438846917,
+  "n_params": 834614,
+  "train_seconds": 72.48531174659729,
+  "val_co_bps_official": 0.13879904200889806
+}

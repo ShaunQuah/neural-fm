@@ -1,0 +1,9 @@
+{
+  "run": "layers_6",
+  "seed": 0,
+  "dev_co_bps": 0.33645587790583886,
+  "val_co_bps": 0.34287720190690185,
+  "n_params": 1249078,
+  "train_seconds": 97.30100464820862,
+  "val_co_bps_official": 0.34172915952733074
+}

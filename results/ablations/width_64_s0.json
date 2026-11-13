@@ -1,0 +1,9 @@
+{
+  "run": "width_64",
+  "seed": 0,
+  "dev_co_bps": 0.28171878211223117,
+  "val_co_bps": 0.2887548418353138,
+  "n_params": 229750,
+  "train_seconds": 73.11009335517883,
+  "val_co_bps_official": 0.2876067994557427
+}

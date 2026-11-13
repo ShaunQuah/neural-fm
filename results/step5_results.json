@@ -1,0 +1,115 @@
+{
+  "protocol": "frozen config chosen on internal dev fold (step 4); official val split scored once per seed",
+  "config": {
+    "dropout": 0.5,
+    "weight_decay": 0.1,
+    "mask_ratio": 0.25,
+    "mask_span": 5,
+    "epochs": 400
+  },
+  "metric": "co-bps, NLB-official definition (null = mean rate of evaluated spikes)",
+  "baselines": {
+    "Mean-rate null": {
+      "score": -0.0011480423795711123,
+      "lo": -0.0011480423795711123,
+      "hi": -0.0011480423795711123
+    },
+    "GLM 40 ms / 0.1": {
+      "score": 0.18824588928030736,
+      "lo": 0.1811282202196973,
+      "hi": 0.19335765352161874
+    },
+    "GLM 50 ms / 0.01 (NLB ref.)": {
+      "score": 0.21234745172915317,
+      "lo": 0.20339689733146546,
+      "hi": 0.21894097283042974
+    }
+  },
+  "transformer_seeds": [
+    {
+      "seed": 0,
+      "dev_co_bps": 0.32644583226733065,
+      "val_co_bps": 0.3313287491001083,
+      "train_seconds": 90.6560366153717
+    },
+    {
+      "seed": 1,
+      "dev_co_bps": 0.34738029692720535,
+      "val_co_bps": 0.336677266008688,
+      "train_seconds": 89.13032841682434
+    },
+    {
+      "seed": 2,
+      "dev_co_bps": 0.32696205238166487,
+      "val_co_bps": 0.34025026798206065,
+      "train_seconds": 90.54094219207764
+    },
+    {
+      "seed": 3,
+      "dev_co_bps": 0.3399737392202057,
+      "val_co_bps": 0.33126705819564845,
+      "train_seconds": 88.2619059085846
+    },
+    {
+      "seed": 4,
+      "dev_co_bps": 0.34031181432245494,
+      "val_co_bps": 0.3346038600622193,
+      "train_seconds": 90.19107675552368
+    }
+  ],
+  "transformer_mean": 0.3348254402697449,
+  "transformer_sd": 0.0038011854790694546,
+  "ensemble": {
+    "score": 0.3521671760538472,
+    "ci95": [
+      0.3404622805153914,
+      0.3614772376798279
+    ]
+  },
+  "paired_vs_glm_ref": [
+    {
+      "model": "seed 0",
+      "diff_vs_GLM_ref": 0.11853940429259209,
+      "ci_lo": 0.1123149875362766,
+      "ci_hi": 0.12542617701487802
+    },
+    {
+      "model": "seed 1",
+      "diff_vs_GLM_ref": 0.12409835554326439,
+      "ci_lo": 0.11723484699712639,
+      "ci_hi": 0.13143279892525672
+    },
+    {
+      "model": "seed 2",
+      "diff_vs_GLM_ref": 0.127663476631321,
+      "ci_lo": 0.12095692750697253,
+      "ci_hi": 0.1349378890805854
+    },
+    {
+      "model": "seed 3",
+      "diff_vs_GLM_ref": 0.11878829998043283,
+      "ci_lo": 0.11214227491496553,
+      "ci_hi": 0.1260712373126837
+    },
+    {
+      "model": "seed 4",
+      "diff_vs_GLM_ref": 0.12200294983234582,
+      "ci_lo": 0.11542677039034939,
+      "ci_hi": 0.1292874854070044
+    },
+    {
+      "model": "ensemble",
+      "diff_vs_GLM_ref": 0.13956978472061224,
+      "ci_lo": 0.13355526763459952,
+      "ci_hi": 0.1461868144587936
+    }
+  ],
+  "published_nlb21_table1": {
+    "Smoothing": 0.211,
+    "GPFA": 0.187,
+    "SLDS": 0.219,
+    "NDT": 0.329,
+    "AutoLFADS": 0.346
+  },
+  "published_caveat": "split used by the paper's table not confirmed; not a like-for-like comparison"
+}

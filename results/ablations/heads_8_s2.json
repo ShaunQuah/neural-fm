@@ -1,0 +1,9 @@
+{
+  "run": "heads_8",
+  "seed": 2,
+  "dev_co_bps": 0.3137456257532387,
+  "val_co_bps": 0.324836837756814,
+  "n_params": 852534,
+  "train_seconds": 73.30757141113281,
+  "val_co_bps_official": 0.3236887953772429
+}

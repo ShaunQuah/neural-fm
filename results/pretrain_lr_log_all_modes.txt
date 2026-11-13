@@ -1,0 +1,169 @@
+﻿pretrain s1 step 200 train 0.3352 dev held-in NLL 0.2992
+pretrain s1 step 400 train 0.1553 dev held-in NLL 0.1401
+pretrain s1 step 600 train 0.1047 dev held-in NLL 0.0996
+pretrain s1 step 800 train 0.0948 dev held-in NLL 0.0917
+pretrain s1 step 1000 train 0.0917 dev held-in NLL 0.0903
+pretrain s1 step 1200 train 0.0900 dev held-in NLL 0.0900
+pretrain s1 step 1400 train 0.0909 dev held-in NLL 0.0900
+pretrain s1 step 1600 train 0.0903 dev held-in NLL 0.0899
+pretrain s1 step 1800 train 0.0903 dev held-in NLL 0.0894
+pretrain s1 step 2000 train 0.0912 dev held-in NLL 0.0884
+pretrain s1 step 2200 train 0.0885 dev held-in NLL 0.0876
+pretrain s1 step 2400 train 0.0885 dev held-in NLL 0.0871
+pretrain s1 step 2600 train 0.0868 dev held-in NLL 0.0867
+pretrain s1 step 2800 train 0.0883 dev held-in NLL 0.0864
+pretrain s1 step 3000 train 0.0860 dev held-in NLL 0.0861
+pretrain s1 step 3200 train 0.0883 dev held-in NLL 0.0860
+pretrain s1 step 3400 train 0.0871 dev held-in NLL 0.0859
+pretrain s1 step 3600 train 0.0877 dev held-in NLL 0.0857
+pretrain s1 step 3800 train 0.0841 dev held-in NLL 0.0855
+pretrain s1 step 4000 train 0.0867 dev held-in NLL 0.0855
+pretrain s1 step 4200 train 0.0860 dev held-in NLL 0.0854
+pretrain s1 step 4400 train 0.0855 dev held-in NLL 0.0853
+pretrain s1 step 4600 train 0.0871 dev held-in NLL 0.0852
+pretrain s1 step 4800 train 0.0882 dev held-in NLL 0.0852
+pretrain s1 step 5000 train 0.0849 dev held-in NLL 0.0852
+pretrain s1 step 5200 train 0.0854 dev held-in NLL 0.0851
+pretrain s1 step 5400 train 0.0855 dev held-in NLL 0.0852
+pretrain s1 step 5600 train 0.0883 dev held-in NLL 0.0851
+pretrain s1 step 5800 train 0.0849 dev held-in NLL 0.0852
+pretrain s1 step 6000 train 0.0870 dev held-in NLL 0.0851
+pretrain s1 step 6200 train 0.0863 dev held-in NLL 0.0850
+pretrain s1 step 6400 train 0.0840 dev held-in NLL 0.0850
+pretrain s1 step 6600 train 0.0870 dev held-in NLL 0.0850
+pretrain s1 step 6800 train 0.0859 dev held-in NLL 0.0850
+pretrain s1 step 7000 train 0.0857 dev held-in NLL 0.0850
+pretrain s1 step 7200 train 0.0861 dev held-in NLL 0.0849
+pretrain s1 step 7400 train 0.0866 dev held-in NLL 0.0849
+pretrain s1 step 7600 train 0.0856 dev held-in NLL 0.0849
+pretrain s1 step 7800 train 0.0844 dev held-in NLL 0.0849
+pretrain s1 step 8000 train 0.0847 dev held-in NLL 0.0849
+pretrain s2 step 200 train 0.3324 dev held-in NLL 0.2967
+pretrain s2 step 400 train 0.1521 dev held-in NLL 0.1378
+pretrain s2 step 600 train 0.1060 dev held-in NLL 0.0994
+pretrain s2 step 800 train 0.0944 dev held-in NLL 0.0923
+pretrain s2 step 1000 train 0.0916 dev held-in NLL 0.0911
+pretrain s2 step 1200 train 0.0927 dev held-in NLL 0.0909
+pretrain s2 step 1400 train 0.0908 dev held-in NLL 0.0908
+pretrain s2 step 1600 train 0.0910 dev held-in NLL 0.0907
+pretrain s2 step 1800 train 0.0890 dev held-in NLL 0.0901
+pretrain s2 step 2000 train 0.0900 dev held-in NLL 0.0893
+pretrain s2 step 2200 train 0.0889 dev held-in NLL 0.0886
+pretrain s2 step 2400 train 0.0881 dev held-in NLL 0.0881
+pretrain s2 step 2600 train 0.0883 dev held-in NLL 0.0877
+pretrain s2 step 2800 train 0.0880 dev held-in NLL 0.0874
+pretrain s2 step 3000 train 0.0869 dev held-in NLL 0.0871
+pretrain s2 step 3200 train 0.0885 dev held-in NLL 0.0869
+pretrain s2 step 3400 train 0.0859 dev held-in NLL 0.0868
+pretrain s2 step 3600 train 0.0867 dev held-in NLL 0.0867
+pretrain s2 step 3800 train 0.0889 dev held-in NLL 0.0866
+pretrain s2 step 4000 train 0.0875 dev held-in NLL 0.0865
+pretrain s2 step 4200 train 0.0872 dev held-in NLL 0.0864
+pretrain s2 step 4400 train 0.0852 dev held-in NLL 0.0863
+pretrain s2 step 4600 train 0.0878 dev held-in NLL 0.0863
+pretrain s2 step 4800 train 0.0859 dev held-in NLL 0.0862
+pretrain s2 step 5000 train 0.0849 dev held-in NLL 0.0862
+pretrain s2 step 5200 train 0.0858 dev held-in NLL 0.0861
+pretrain s2 step 5400 train 0.0858 dev held-in NLL 0.0861
+pretrain s2 step 5600 train 0.0867 dev held-in NLL 0.0860
+pretrain s2 step 5800 train 0.0882 dev held-in NLL 0.0860
+pretrain s2 step 6000 train 0.0844 dev held-in NLL 0.0860
+pretrain s2 step 6200 train 0.0853 dev held-in NLL 0.0860
+pretrain s2 step 6400 train 0.0839 dev held-in NLL 0.0859
+pretrain s2 step 6600 train 0.0842 dev held-in NLL 0.0859
+pretrain s2 step 6800 train 0.0859 dev held-in NLL 0.0859
+pretrain s2 step 7000 train 0.0852 dev held-in NLL 0.0859
+pretrain s2 step 7200 train 0.0881 dev held-in NLL 0.0859
+pretrain s2 step 7400 train 0.0859 dev held-in NLL 0.0859
+pretrain s2 step 7600 train 0.0885 dev held-in NLL 0.0859
+pretrain s2 step 7800 train 0.0876 dev held-in NLL 0.0859
+pretrain s2 step 8000 train 0.0858 dev held-in NLL 0.0859
+scratch  lr 1e-03  dev mean 0.1760  per-seed [0.19, 0.179, 0.159]
+scratch  lr 3e-03  dev mean 0.1934  per-seed [0.214, 0.217, 0.148]
+scratch  lr 1e-02  dev mean 0.1865  per-seed [0.163, 0.204, 0.192]
+scratch  lr 3e-02  dev mean 0.1959  per-seed [0.12, 0.235, 0.233]
+finetune lr 3e-04  dev mean 0.2155  per-seed [0.217, 0.209, 0.22]
+finetune lr 1e-03  dev mean 0.2745  per-seed [0.269, 0.282, 0.273]
+finetune lr 3e-03  dev mean 0.2764  per-seed [0.267, 0.286, 0.276]
+finetune lr 1e-02  dev mean 0.2625  per-seed [0.243, 0.279, 0.266]
+probe    lr 1e-02  dev mean 0.1037  per-seed [0.27, -0.188, 0.229]
+probe    lr 3e-02  dev mean 0.1554  per-seed [0.287, -0.082, 0.261]
+probe    lr 1e-01  dev mean 0.1167  per-seed [0.291, -0.214, 0.273]
+probe    lr 3e-01  dev mean 0.0378  per-seed [0.249, -0.316, 0.181]
+{
+  "scratch": {
+    "best_lr": 0.03,
+    "dev_by_lr": {
+      "0.001": [
+        0.1898186435590336,
+        0.1791507721474802,
+        0.1590398497507866
+      ],
+      "0.003": [
+        0.21435379468836702,
+        0.217364421016131,
+        0.1483979597651065
+      ],
+      "0.01": [
+        0.1632923035829515,
+        0.2044062497701378,
+        0.1918386746501924
+      ],
+      "0.03": [
+        0.11964405486069876,
+        0.23493932526323225,
+        0.23298158932326568
+      ]
+    }
+  },
+  "finetune": {
+    "best_lr": 0.003,
+    "dev_by_lr": {
+      "0.0003": [
+        0.21713775453642592,
+        0.20911339728792414,
+        0.220323812573736
+      ],
+      "0.001": [
+        0.2690420278979072,
+        0.2816547350248987,
+        0.2728328195263927
+      ],
+      "0.003": [
+        0.2668864502045083,
+        0.2857504194195825,
+        0.2764652537450247
+      ],
+      "0.01": [
+        0.24303710155936903,
+        0.278771723683807,
+        0.26566070381194423
+      ]
+    }
+  },
+  "probe": {
+    "best_lr": 0.03,
+    "dev_by_lr": {
+      "0.01": [
+        0.2700579972769227,
+        -0.1877648521050292,
+        0.22867064380719115
+      ],
+      "0.03": [
+        0.28670155763269994,
+        -0.08160842238633431,
+        0.26111947567370736
+      ],
+      "0.1": [
+        0.29104049704991747,
+        -0.21380656317942,
+        0.2727725074110645
+      ],
+      "0.3": [
+        0.24870967443673456,
+        -0.3160751686809492,
+        0.18070880482231116
+      ]
+    }
+  }
+}
