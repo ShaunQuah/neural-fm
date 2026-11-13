@@ -133,12 +133,6 @@ notebooks/      step5 (final evaluation), step6 (ablations), step7 (pretraining)
 figures/        all figures
 results/        per-run JSON results and logs (checkpoints and caches are not tracked)
 ```
-
-## Status
-
-Done: model, metrics and tests, baselines, evaluation, ablations, pretraining experiment, lint and test CI.
-Not built yet: a serving API and container image.
-
 ## References
 
 Pei et al., *Neural Latents Benchmark '21: Evaluating latent variable models of neural population activity*,
