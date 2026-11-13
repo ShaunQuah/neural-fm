@@ -16,12 +16,12 @@ in 5 ms bins, 137 "held-in" and 45 "held-out" neurons.
 
 The benchmark task is **co-smoothing**: given the held-in neurons' spikes, predict the held-out neurons' firing rates.
 It is scored by **co-bps** (bits per spike above a mean-rate null; higher is better). The metric here is checked against
-`nlb_tools.evaluation.bits_per_spike` in `tests/test_metrics.py`.
+`nlb_tools.evaluation.bits_per_spike` in `tests/test_metrics.py` (that test is skipped if `nlb_tools` is not installed).
 
 ## Model
 
 Each 5 ms bin is one token: held-in counts go through `log1p` and a linear layer to 128 dimensions. Random spans of
-bins (about 23% of bins) are replaced by a learned mask token, learned position embeddings are added, and a
+bins (about 22% of bins at the default settings) are replaced by a learned mask token, learned position embeddings are added, and a
 4-layer pre-norm transformer encoder (4 heads, 852,534 parameters) feeds a linear head that predicts log firing
 rates for all 182 neurons. The loss is Poisson negative log-likelihood: held-in neurons at masked bins only, held-out
 neurons at every bin.
@@ -29,7 +29,9 @@ neurons at every bin.
 ## Results
 
 All numbers are co-bps on the public validation split (573 trials), scored once per run. Learning rates and early
-stopping were chosen on a dev fold held out of the training trials, never on the validation split.
+stopping were chosen on a dev fold held out of the training trials. Selection was not perfectly blind: the first two
+step-4 sweeps and the discarded first pretraining run also printed validation scores (for step 4 the dev fold picked the
+same winner).
 
 ### Final evaluation
 
@@ -41,13 +43,14 @@ stopping were chosen on a dev fold held out of the training trials, never on the
 | Transformer, 5-seed ensemble | 0.352 [0.340, 0.361] |
 
 Brackets are 95% trial-level bootstrap intervals. Paired against the reference GLM, each seed gains +0.119 to
-+0.128 with every interval above zero, and 44 of 45 held-out neurons improve.
++0.128 with every interval above zero (trial-level resampling only; it does not capture training-seed variance). The
+5-seed ensemble improves on the GLM for 44 of 45 held-out neurons.
 
 ![Model comparison](figures/fig1_model_comparison.png)
 
 ### Ablations (3 seeds each, one change at a time)
 
-Seed-to-seed SD is about 0.003-0.005, so differences below roughly 0.005 are noise.
+Seed-to-seed SD is mostly 0.002-0.006 (0.010 for d_model 256), so differences below roughly 0.005 are noise.
 
 | Change | co-bps | vs baseline |
 |---|---|---|
@@ -66,7 +69,8 @@ difference. The full table is in `RESULTS_SUMMARY.md`.
 ### Pretraining and label efficiency
 
 The encoder is pretrained on held-in spikes only (no held-out labels), then adapted using a fraction of the
-held-out labels. Every arm uses the same labelled trials, step budget, and dev-chosen learning rate (5 seeds).
+held-out labels. Every arm uses the same labelled trials and dev-chosen hyperparameters (learning rate; alpha for the
+GLM), and the transformer arms share an 8,000-step budget (5 seeds).
 
 | Labelled trials | GLM | Scratch | Pretrained + fine-tune |
 |---|---|---|---|
@@ -108,7 +112,8 @@ export NEURALFM_DATA=data/000128/sub-Jenkins     # PowerShell: $env:NEURALFM_DAT
 
 python -m neuralfm.run_baselines                 # null and GLM baselines
 python -m neuralfm.train --run-name final --dropout 0.5 --wd 0.1 --mask-ratio 0.25 \
-    --mask-span 5 --epochs 400 --patience 100 --seed 0 --out results/step5
+    --mask-span 5 --epochs 400 --patience 100 --seed 0 --out results/step5   # repeat for --seed 1 2 3 4;
+                                                 # notebooks/step5_final_evaluation.ipynb writes results/step5_results.json
 python -m neuralfm.ablate --seeds 0 1 2          # about 1 hour on one GPU
 python -m neuralfm.pretrain --stage lr           # dev-only learning-rate sweep
 python -m neuralfm.pretrain --stage lr_frac --steps 8000 --out results/pretrain_v2 --lr-from results/pretrain

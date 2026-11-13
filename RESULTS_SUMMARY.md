@@ -2,9 +2,11 @@
 
 Masked-reconstruction spike transformer on NLB MC_Maze (co-smoothing). All scores are **co-bps** (NLB-official
 definition) on the **public validation split** (573 trials), scored once per run. Hyperparameters, learning rates and early
-stopping were chosen on an internal dev fold (15% of the 1,721 training trials), never on the validation split.
+stopping were chosen on an internal dev fold (15% of the 1,721 training trials). Selection was not perfectly blind: the first two
+step-4 sweeps and the discarded first pretraining run also printed validation scores (for step 4 the dev fold picked the same winner).
 
-Generated from the saved files in `results/` on 2026-10-30. Status: steps 1-7 complete; production steps (API, Docker, CI, README) not started.
+Generated from the saved files in `results/` on 2026-10-30; status section updated afterwards. Status: steps 1-7, README and lint/test CI
+complete; serving API and container image not started.
 
 ## 1. Final evaluation (step 5)
 
@@ -19,13 +21,15 @@ Frozen config: 4 layers, 4 heads, d_model 128, dropout 0.5, weight decay 0.1, ma
 | Transformer, 5-seed ensemble (extra) | 0.352 [0.340, 0.361] |
 
 * Paired gain over the reference GLM: +0.119 to +0.128 per seed, every bootstrap interval above 0; +0.140 for the ensemble.
-* Per-neuron (step-5 notebook): 44 of 45 held-out neurons improved.
+* Per-neuron (step-5 notebook, 5-seed ensemble vs the reference GLM): 44 of 45 held-out neurons improved. A re-check from the saved
+  checkpoints gave 44, 44, 44, 43, 44 of 45 for the individual seeds.
 * Published NLB'21 Table 1 for context (NDT 0.329, AutoLFADS 0.346): **not a like-for-like comparison**. The split used by the
   paper's table is unconfirmed, and mine is the public validation split. Do not claim to beat it; quote the 5-seed mean.
 
 ## 2. Ablations (step 6; 3 seeds, one change at a time)
 
-Seed SD is about 0.003-0.005, so differences below roughly 0.005 are noise.
+Seed SD is mostly 0.002-0.006 (0.010 for d_model 256), so differences below roughly 0.005 are noise. Mask ratio is the nominal
+span-start rate; the realised masked fraction is lower (about 0.095 / 0.22 / 0.40 for ratio 0.10 / 0.25 / 0.50 at span 5).
 
 | Change | Val co-bps | Change vs baseline | Verdict |
 |---|---|---|---|
@@ -37,7 +41,7 @@ Seed SD is about 0.003-0.005, so differences below roughly 0.005 are noise.
 | 1 / 2 heads | 0.335 / 0.336 | -0.002 / -0.000 | no difference from 4 |
 | 8 heads | 0.323 | -0.013 | worse in all 3 seeds |
 | 1 / 2 / 6 layers | 0.262 / 0.311 / 0.345 | -0.074 / -0.025 / +0.009 | depth helps; 6 layers small gain |
-| d_model 64 / 256 | 0.291 / 0.327 | -0.045 / -0.009 | 64 too small; 256 slightly worse |
+| d_model 64 / 256 | 0.291 / 0.327 | -0.045 / -0.009 | 64 too small; 256 slightly worse (seed SD 0.010, so only weak evidence) |
 
 Caveats: 3 seeds only; baseline dropout and weight decay were tuned at 4 layers / d_model 128; the frozen config was not changed
 on the basis of these validation numbers (dev-fold ranking agrees).
@@ -79,8 +83,11 @@ trained from masked inputs, tested on unmasked inputs).
 
 ## 6. State of the repository
 
-* Code: `src/neuralfm/` (model, data, metrics, baselines, train, ablate, pretrain, glm_fraction); tests: 4 pass.
-* Notebooks: step 3-4, 5, 6, 7. Figures: architecture and fig1-fig6. Results: about 264 MB in `results/`.
-* Stale: `results/baselines.json` and `run_baselines.py` (old 40 ms / 0.1 settings, dropped ridge baseline).
+* Code: `src/neuralfm/` (model, data, metrics, baselines, run_baselines, train, ablate, pretrain, glm_fraction); tests: 4 pass.
+* Notebooks: step 3-4, 5, 6, 7. Figures: architecture and fig1-fig6. Results: about 264 MB in `results/` on disk (checkpoints and the data cache are untracked).
+* `results/baselines.json` and `run_baselines.py` are current (null, 40 ms / 0.1 and the 50 ms / 0.01 reference GLM).
+* The `val_co_bps` key means different things in different files: in `train.py` run JSONs (`results/step5/final_s*.json`, `results/*.json`)
+  it uses the stricter training-mean null; in `ablate.py`, `pretrain.py`, `glm_fraction.py` and `step5_results.json` it is the NLB-official score
+  (`val_co_bps_official` in the ablation run files). All numbers quoted above are the official definition.
 * MLflow: logged for train.py runs (steps 4-6; `results/step5` shows 15 runs for 5 final seeds, probably notebook re-runs); `pretrain.py` does not log to MLflow.
-* Not started: README, FastAPI service and tests, Dockerfile, git repo and CI (`.github/workflows` is an empty folder), second dataset, cloud deployment.
+* Not started: FastAPI service and tests, Dockerfile, second dataset, cloud deployment.
