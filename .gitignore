@@ -20,3 +20,7 @@ mlruns/
 # Keep small result files (JSON, text logs) and figures
 !results/**/*.json
 !results/**/*.txt
+
+# The one small checkpoint (+ its recorded result) that the Docker image bundles
+!models/final_s0.pt
+.Rhistory

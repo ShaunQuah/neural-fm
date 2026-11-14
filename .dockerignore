@@ -1,0 +1,13 @@
+.git
+.github
+.pytest_cache
+.ruff_cache
+__pycache__
+*.egg-info
+data
+results
+notebooks
+figures
+mlruns
+mlflow.db
+*.npz

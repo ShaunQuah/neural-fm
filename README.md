@@ -123,16 +123,42 @@ python -m neuralfm.glm_fraction                  # GLM on the same labelled subs
 
 Training was done on one RTX 5070 Ti; the final model trains in about 90 seconds.
 
+## Docker (CPU)
+
+The image bundles the code, CPU-only PyTorch, the tests and one trained checkpoint
+(`models/final_s0.pt`, seed 0 of the final evaluation). It is about 1.7 GB, almost all of it PyTorch.
+No GPU or dataset download is needed to build it.
+
+```bash
+docker build -t neural-fm .
+docker run --rm neural-fm                        # run the tests
+```
+
+To re-score the bundled checkpoint, mount a folder containing `mc_maze_5ms.npz`, the processed
+dataset that the first training or baseline run writes to `results/` (the data is not in the image
+or the repository):
+
+```bash
+docker run --rm -v "$PWD/results:/data:ro" neural-fm python -m neuralfm.evaluate --cache /data/mc_maze_5ms.npz
+```
+
+It prints the official validation co-bps and compares it to the value recorded when the model was
+trained (0.3313). On CPU it re-scores to 0.3317; the recorded run used bf16 on a GPU, so the check
+allows a difference of 0.002. The container does not train models. The official-metric
+cross-check test is skipped in the image because `nlb_tools` is not installed there.
+
 ## Repository layout
 
 ```
-src/neuralfm/   model, data loading, metrics, baselines, training, ablations, pretraining
+src/neuralfm/   model, data loading, metrics, baselines, training, ablations, pretraining, evaluate
+models/         the one checkpoint bundled in the Docker image (plus its recorded result)
 tests/          metric tests (match the official NLB function, null scores 0, bootstrap checks)
 notebooks/      step5 (final evaluation), step6 (ablations), step7 (pretraining) with saved outputs;
                 steps_3_4 is a walkthrough of the baselines and dev-fold sweep to run yourself
 figures/        all figures
 results/        per-run JSON results and logs (checkpoints and caches are not tracked)
 ```
+
 ## References
 
 Pei et al., *Neural Latents Benchmark '21: Evaluating latent variable models of neural population activity*,
