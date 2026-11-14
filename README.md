@@ -8,6 +8,40 @@ Author: Shaun Quah
 
 ![Model architecture](figures/transformer_architecture.png)
 
+**Architecture of the masked spike transformer.** (1) Input: held-in spike counts for one trial, 137 neurons
+by 140 time bins of 5 ms (700 ms). Red bands mark masked spans, used in training only (about 22% of bins, in spans of
+5 bins, redrawn every batch). (2) Counts are transformed with log(1 + x) and linearly projected to 128 dimensions, one
+token per time bin. (3) Masked bins are replaced by a learned mask token, and a learned position embedding is added.
+(4) Four pre-norm transformer encoder layers, each a multi-head self-attention block (4 heads) followed by a
+feed-forward network (FFN; 128 to 512 to 128 units with a GELU activation), both with residual connections.
+(5) A linear head outputs the log firing rate of all 182 neurons in every bin. (6) The loss is the Poisson negative
+log-likelihood: held-in neurons at masked bins only, held-out neurons at every bin. Right: training versus inference
+settings, and where the 852,534 parameters sit (93% in the encoder). Abbreviations are listed under
+[Abbreviations](#abbreviations).
+
+## Abbreviations
+
+| Term | Meaning |
+|---|---|
+| NLB | Neural Latents Benchmark |
+| MC_Maze | the NLB dataset recorded in macaque motor cortex (MC) during a maze-reaching task |
+| DANDI | Distributed Archives for Neurophysiology Data Integration (the data archive that hosts MC_Maze) |
+| co-bps | co-smoothing bits per spike, the NLB score (higher is better) |
+| GLM | generalised linear model; here, Poisson regression on smoothed spikes |
+| NLL | negative log-likelihood, the training loss |
+| SD | standard deviation (across seeds unless stated) |
+| CI | confidence interval |
+| NDT | Neural Data Transformer |
+| AutoLFADS | automated Latent Factor Analysis via Dynamical Systems |
+| GPFA | Gaussian-process factor analysis |
+| SLDS | switching linear dynamical system |
+| FFN | feed-forward network, the per-bin block inside each transformer layer |
+| GELU | Gaussian error linear unit, an activation function |
+| d_model | width of each token vector (128 by default) |
+| bf16 | bfloat16, a 16-bit floating-point format (brain floating point) |
+| CPU, GPU | central processing unit, graphics processing unit |
+| CC-BY-4.0 | Creative Commons Attribution 4.0 licence |
+
 ## Task and data
 
 MC_Maze ([DANDI 000128](https://dandiarchive.org/dandiset/000128), CC-BY-4.0) holds recordings from macaque motor
@@ -15,7 +49,7 @@ and premotor cortex during a delayed maze-reaching task: 1,721 training trials a
 in 5 ms bins, 137 "held-in" and 45 "held-out" neurons.
 
 The benchmark task is **co-smoothing**: given the held-in neurons' spikes, predict the held-out neurons' firing rates.
-It is scored by **co-bps** (bits per spike above a mean-rate null; higher is better). The metric here is checked against
+It is scored by **co-bps** (co-smoothing bits per spike above a mean-rate null; higher is better). The metric here is checked against
 `nlb_tools.evaluation.bits_per_spike` in `tests/test_metrics.py` (that test is skipped if `nlb_tools` is not installed).
 
 ## Model
@@ -38,8 +72,8 @@ same winner).
 | Model | co-bps |
 |---|---|
 | Mean-rate null | -0.001 |
-| Smoothing + Poisson GLM, 50 ms, alpha 0.01 (NLB reference settings) | 0.212 [0.203, 0.219] |
-| **Transformer, 5 seeds** | **0.335 ± 0.004** (SD) |
+| Smoothing + Poisson generalised linear model (GLM), 50 ms, alpha 0.01 (NLB reference settings) | 0.212 [0.203, 0.219] |
+| **Transformer, 5 seeds** | **0.335 ± 0.004** (standard deviation, SD) |
 | Transformer, 5-seed ensemble | 0.352 [0.340, 0.361] |
 
 Brackets are 95% trial-level bootstrap intervals. Paired against the reference GLM, each seed gains +0.119 to
@@ -47,6 +81,17 @@ Brackets are 95% trial-level bootstrap intervals. Paired against the reference G
 5-seed ensemble improves on the GLM for 44 of 45 held-out neurons.
 
 ![Model comparison](figures/fig1_model_comparison.png)
+
+**Figure 1. Validation co-bps of the baselines and the transformer.** Left, this project (573 validation trials, higher
+is better). Bars for the GLMs and the 5-seed ensemble show 95% bootstrap confidence intervals (CIs) over trials. The
+transformer bar is the mean of 5 training seeds with a ±1 SD whisker, and white dots are the individual seeds.
+"GLM 40 ms / 0.1" is a smoothing width of 40 ms with regularisation strength alpha 0.1 (my first setting);
+"GLM 50 ms / 0.01" uses the NLB reference settings. The mean-rate null predicts each neuron's average rate and scores
+about zero by construction. Right, published scores from Table 1 of the NLB'21 paper for context: Smoothing, Gaussian-process
+factor analysis (GPFA), switching linear dynamical system (SLDS), Neural Data Transformer (NDT) and automated Latent
+Factor Analysis via Dynamical Systems (AutoLFADS). The split used for that table is unconfirmed, so the right panel is
+not a like-for-like comparison. Per-neuron and single-trial views of the same models (Figures 2 to 4), and the step 3 and step 4 figures, are
+described in [`figures/README.md`](figures/README.md).
 
 ### Ablations (3 seeds each, one change at a time)
 
@@ -65,6 +110,15 @@ Masking and position information are essential, depth helps, and head count from
 difference. The full table is in `RESULTS_SUMMARY.md`.
 
 ![Ablations](figures/fig5_ablations.png)
+
+**Figure 5. Ablations: validation co-bps when one setting is changed at a time (3 seeds per row).** Left, absolute
+score: each bar is the mean of 3 seeds, the whisker is ±1 SD, and the white dots are individual seeds. The baseline is
+4 layers (4L), 4 attention heads (4H), d_model 128, mask ratio 0.25 and mask span 5. The dashed vertical line marks the
+baseline mean (0.336) and the dotted line the NLB-reference GLM (0.212). Right, the change from the baseline computed
+separately for each seed and then averaged, so that effects shared by a seed cancel. Green bars are gains and red
+bars are losses. The grey band (±0.005) is typical seed-to-seed noise, so changes inside it are not distinguishable
+from zero. Groups: masking (whether and how much input is hidden), position (learned position embedding removed),
+attention heads, depth (number of layers) and width (d_model).
 
 ### Pretraining and label efficiency
 
@@ -85,6 +139,15 @@ with full labels. At 10% labels the scratch transformer is worse than the GLM, s
 +0.04 over the GLM.
 
 ![Label efficiency](figures/fig6_label_efficiency.png)
+
+**Figure 6. Label efficiency of pretraining on held-in spikes (5 seeds).** Left, validation co-bps against the number of
+held-out-neuron labelled trials used (10%, 25%, 50% and 100% of the 1,463 trials left after the dev fold). Lines are
+means over 5 seeds, shaded bands are ±1 SD, and faint dots are individual seeds. Arms: GLM trained on the same labelled
+trials; transformer trained from scratch (random initialisation); pretrained encoder with all weights fine-tuned;
+pretrained encoder frozen with only the output head trained (probe). Right, the gain of pretrained fine-tuning over
+the scratch transformer (blue) and over the GLM (grey), computed per seed: bars are means and dots are individual
+seeds. A gain over the scratch transformer measures the effect of pretraining itself; a gain over the GLM also
+includes the change of architecture.
 
 ## Limitations
 
